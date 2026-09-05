@@ -111,7 +111,7 @@ passphrase-less-reboot.enable = true;
 
 ### `passphrase-less-reboot.tempKeyFile`
 
-**Type:** `string`
+**Type:** `str`
 
 **Default:** `"/etc/tmp-passphrase"`
 
@@ -148,7 +148,7 @@ The module adds the temporary key to this slot before `kexec` and removes it aga
 
 ### `passphrase-less-reboot.existingKeyFile`
 
-**Type:** `string`
+**Type:** `str`
 
 **Required**
 

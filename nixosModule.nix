@@ -16,7 +16,7 @@
         mkForce
         concatStringsSep
         ;
-      inherit (lib.types) string int;
+      inherit (lib.types) str int;
 
       deviceNames = lib.filter (
         name: config.boot.initrd.luks.devices.${name}.keyFile == cfg.tempKeyFile
@@ -33,7 +33,7 @@
             This file will be used to store the randomly generated passKey for the encrypted root partition during reboot.
             `config.boot.initrd.devices.*.keyFile`should point to this file.
           '';
-          type = string;
+          type = str;
           default = "/etc/tmp-passphrase";
         };
 
@@ -48,7 +48,7 @@
             Path to an existing key file.
             This is used to add a new key to the encrypted device.
           '';
-          type = string;
+          type = str;
         };
       };
 
