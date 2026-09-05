@@ -91,7 +91,7 @@
               exit 1
             fi
 
-            # add 256 random bytes temp key to the LUKS keyslot ${cfg.keySlot}
+            # add 256 random bytes temp key to the LUKS keyslot ${toString cfg.keySlot}
             KEY_DIR=$(dirname "${cfg.tempKeyFile}")
             TEMP_DIR="$(mktemp -d --tmpdir=/dev/shm)"
             mkdir -p "$TEMP_DIR$KEY_DIR"
@@ -100,7 +100,7 @@
               map (name: ''
                 cryptsetup luksAddKey \
                   --batch-mode \
-                  --key-slot ${cfg.keySlot} \
+                  --key-slot ${toString cfg.keySlot} \
                   ${getDevice name} \
                   "$TEMP_DIR${cfg.tempKeyFile}" \
                   < "${cfg.existingKeyFile}"
@@ -126,7 +126,7 @@
           path = [ pkgs.cryptsetup ];
           script = concatStringsSep "\n" (
             map (name: ''
-              cryptsetup luksKillSlot --batch-mode ${getDevice name} ${cfg.keySlot} || true
+              cryptsetup luksKillSlot --batch-mode ${getDevice name} ${toString cfg.keySlot} || true
             '') deviceNames
           );
         };
