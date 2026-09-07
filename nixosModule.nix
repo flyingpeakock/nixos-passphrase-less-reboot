@@ -30,8 +30,17 @@
             assertion = deviceNames != [ ];
             message = ''
               No LUKS devices found with keyFile set to ${cfg.tempKeyFile}.
-              Set `config.boot.initrd.luks.devices.*.keyFile to ${cfg.tempKeyFile}
+              Set `config.boot.initrd.luks.devices.*.keyFile` to ${cfg.tempKeyFile}
               for at least one device to use passphrase-less reboot.
+            '';
+          }
+          {
+            assertion =
+              config.initrd.systemd.enable
+              || (lib.all (deviceName: config.boot.initrd.luks.${deviceName}.fallbackToPassword) deviceNames);
+            message = ''
+              Without systemd in the stage-1 initrd, all configured LUKS devices must have
+              `fallbackToPassword = true`.
             '';
           }
         ];
