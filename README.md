@@ -163,6 +163,14 @@ passphrase-less-reboot.existingKeyFile =
 
 This key is **not** embedded into the generated initrd. It is only read by the `prepare-kexec` service in the running system to authenticate the `luksAddKey` operation.
 
+### `passphrase-less-reboot.installPackage`
+
+**Type:** `boolean`
+
+**Default::** `true`
+
+Installs the kexec-reboot script which reboots the system using kexec.
+
 ## Multiple LUKS devices
 
 The module supports multiple LUKS devices.

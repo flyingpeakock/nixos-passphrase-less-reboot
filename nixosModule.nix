@@ -16,7 +16,7 @@
         mkForce
         concatStringsSep
         ;
-      inherit (lib.types) str int;
+      inherit (lib.types) str int bool;
 
       deviceNames = lib.filter (
         name: config.boot.initrd.luks.devices.${name}.keyFile == cfg.tempKeyFile
@@ -49,6 +49,15 @@
             This is used to add a new key to the encrypted device.
           '';
           type = str;
+        };
+
+        installPackage = mkOption {
+          description = ''
+            Whether to install the `kexec-reboot`package.
+            This package provides a script that reboots the system using kexec and the temporary passKey.
+          '';
+          type = bool;
+          default = true;
         };
       };
 
