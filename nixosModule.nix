@@ -36,7 +36,7 @@
           }
           {
             assertion =
-              config.initrd.systemd.enable
+              config.boot.initrd.systemd.enable
               || (lib.all (deviceName: config.boot.initrd.luks.${deviceName}.fallbackToPassword) deviceNames);
             message = ''
               Without systemd in the stage-1 initrd, all configured LUKS devices must have
