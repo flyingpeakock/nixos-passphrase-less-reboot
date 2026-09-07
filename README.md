@@ -489,3 +489,9 @@ This project packages the approach as a reusable NixOS module and integrates it 
 
 Licensed under the [MIT License](LICENSE).
 
+## AI Disclosure
+
+This README is 100% AI-generated. I have proof-read the entire README and take responsibility for its contents.
+
+All of the Nix code and implementation were written by me; AI was only used to help generate and polish the documentation.
+
