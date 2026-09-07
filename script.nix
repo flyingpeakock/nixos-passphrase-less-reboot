@@ -41,7 +41,7 @@
   # create a new cpio archive and append it to the original initrd
   cd "$TEMP_DIR"
   cp "$p/initrd" "$TEMP_DIR/initrd.img"
-  find "$KEY_DIR" | cpio -H newc -o | gzip >> "$TEMP_DIR/initrd.img"
+  find ".$KEY_DIR" | cpio -H newc -o | gzip >> "$TEMP_DIR/initrd.img"
 
   # load the kernel with the new initrd
   echo "Loading NixOS system via kexec."
